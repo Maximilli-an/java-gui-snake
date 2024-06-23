@@ -123,6 +123,15 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener {
             placeFood();
         }
 
+        //init snakepart for food placement collision
+        // for (int i = 0; i < snakeBody.size(); i++){
+        //     Tile snakePart = snakeBody.get(i);
+        //     if (collision(snakePart, food)){
+        //         food = null;
+        //         placeFood();
+        //     }
+        // }
+    
         //snakebody
         for (int i = snakeBody.size()-1; i >= 0; i--){
             Tile snakePart = snakeBody.get(i);
@@ -149,7 +158,8 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener {
                 gameOver = true;
             }
         }
-
+        
+        //out of board
         if (snakeHead.x * tileSize < 0 || snakeHead.x * tileSize > boardWidth ||
             snakeHead.y * tileSize < 0 || snakeHead.y * tileSize > boardHeight){
 
@@ -157,7 +167,7 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener {
         }
     }
 
-    //collision with food
+    //collision between tiles
     public boolean collision(Tile tile1, Tile tile2) {
         return tile1.x == tile2.x && tile1.y == tile2.y;
     }
